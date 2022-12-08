@@ -14,11 +14,11 @@ import codecs
 st. set_page_config(layout="wide")
 
 # Title and subtitle
-st.title("Palmer's Penguins")
-st.markdown("Use this Streamlit app to make your own scatterplot about penguins!")
+st.title("Data Visualisation Application")
+st.markdown("Use this Streamlit app to make your own visuals and run data explorations!")
 
 # Caching for file
-penguin_file = st.file_uploader("Select Your Local Penguins CSV")
+penguin_file = st.file_uploader("Upload CSV")
 @st.cache()
 def load_file(penguin_file):
     if penguin_file is not None:
