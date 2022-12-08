@@ -8,7 +8,6 @@ from streamlit_pandas_profiling import st_profile_report
 import streamlit.components.v1 as components
 
 from pandas_profiling import ProfileReport
-import sweetviz as sv
 import codecs
 
 # -------------- General body --------------
@@ -125,11 +124,6 @@ with tab4:
         sns.heatmap(penguins_df.corr(), ax=ax)
         st.write(fig)
 
-def st_display_sweetviz(report_html,width=1000,height=500):
-	report_file = codecs.open(report_html,'r')
-	page = report_file.read()
-	components.html(page,width=width,height=height,scrolling=True)
-
 with tab5:
     # Show dataset
     if st.checkbox("Show Dataset"):
@@ -169,12 +163,4 @@ with tab5:
             st_profile_report(profile)
             export=profile.to_html()
             st.download_button(label="Download Full Report", data=export, file_name='Pandas_report.html')
-
-    if st.checkbox("Generate report with Sweetviz"):
-        if penguin_file is not None:
-            # df = pd.read_csv(penguin_file)
-            # st.dataframe(penguins_df.head())
-            report = sv.analyze(penguins_df)
-            report.show_html()
-            # st_display_sweetviz("SWEETVIZ_REPORT.html")
 
