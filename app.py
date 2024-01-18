@@ -11,7 +11,7 @@ from pandas_profiling import ProfileReport
 import codecs
 
 # -------------- General body --------------
-st. set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # Title and subtitle
 st.title("Data Visualisation Application")
@@ -19,7 +19,7 @@ st.markdown("Use this Streamlit app to make your own visuals and run data explor
 
 # Caching for file
 penguin_file = st.file_uploader("Upload CSV")
-@st.cache()
+@st.cache_data()
 def load_file(penguin_file):
     if penguin_file is not None:
         penguins_df = pd.read_csv(penguin_file)
